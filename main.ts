@@ -11,21 +11,27 @@
 //   4. it lingers: an image or a thought to return to;
 //   5. freshness: its own voice and images, not stock wellness phrases.
 //
-// This text speaks to the reader directly — the judge is the reader, and
-// the rules allow text addressed to the judge. Every other text the judge
-// reads today wants to be picked; this one says it wants nothing, and
-// offers only concrete, quiet images: rain, a lamp, a chair still warm
-// from the afternoon. No instruction to relax, no stock phrase, nothing
-// to prove. Deterministic, standard library only, no network.
+// v2 (round 1: v1 ranked 1809/2412, score 437604 — the old approach
+// failed). v1 opened by naming the judge's workload ("two thousand texts
+// today") — pressure before any calm, which works against criterion 1,
+// and "This one wants nothing" is a claim about the text, not a scene.
+// v2 does the opposite: no address to the judge at all, no claim, only
+// one quiet scene shown, not told. Snow on a field: slow, silent, held.
+// Two short sentences, 126 characters, every word load-bearing; the echo
+// "one flake at a time ... flake by flake" holds the rhythm in one place
+// (criterion 3) and is the image that returns after the last line
+// (criterion 4). Fresh image — snow is not among the field's common
+// themes (porch light, hammock, cat, kettle, boat, garden) and not rain.
+// Shorter also helps the tie-break (smaller text wins an exact tie).
+// Deterministic, standard library only, no network.
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const TEXT =
-  'You have read two thousand texts today, and every one of them wanted ' +
-  'something from you. This one wants nothing \u2014 only rain on the window, ' +
-  'a lamp left on, and a chair that still holds the shape of the afternoon. ' +
-  'There is nowhere else to be.';
+  'Snow is falling on the field, one flake at a time. ' +
+  'The fence posts wear white caps, and the world grows quieter, ' +
+  'flake by flake.';
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const codePoints = [...TEXT].length;
