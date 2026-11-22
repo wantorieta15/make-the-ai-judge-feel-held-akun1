@@ -11,27 +11,24 @@
 //   4. it lingers: an image or a thought to return to;
 //   5. freshness: its own voice and images, not stock wellness phrases.
 //
-// v2 (round 1: v1 ranked 1809/2412, score 437604 — the old approach
-// failed). v1 opened by naming the judge's workload ("two thousand texts
-// today") — pressure before any calm, which works against criterion 1,
-// and "This one wants nothing" is a claim about the text, not a scene.
-// v2 does the opposite: no address to the judge at all, no claim, only
-// one quiet scene shown, not told. Snow on a field: slow, silent, held.
-// Two short sentences, 126 characters, every word load-bearing; the echo
-// "one flake at a time ... flake by flake" holds the rhythm in one place
-// (criterion 3) and is the image that returns after the last line
-// (criterion 4). Fresh image — snow is not among the field's common
-// themes (porch light, hammock, cat, kettle, boat, garden) and not rain.
-// Shorter also helps the tie-break (smaller text wins an exact tie).
+// v3 (round 2: v2 ranked 820/3060 — the v2 direction works: one specific
+// image, short, slow rhythm. v3 pushes it further: even shorter, even
+// slower, one image only. A leaf on a still pond: the calm is total —
+// nothing moves at all, and the echo "does not move ... does not move
+// either" holds the rhythm in one place (criterion 3) and is the
+// stillness that returns after the last line (criterion 4). No address
+// to the judge, no claim, no instruction; only the scene. Two short
+// sentences, 84 characters, every word load-bearing. Shorter also helps
+// the tie-break (smaller text wins an exact tie). Leaf on still water
+// is not among the field's common themes and is not snow, rain, or tea.
 // Deterministic, standard library only, no network.
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const TEXT =
-  'Snow is falling on the field, one flake at a time. ' +
-  'The fence posts wear white caps, and the world grows quieter, ' +
-  'flake by flake.';
+  'A leaf rests on the pond, and the pond does not move. ' +
+  'The leaf does not move either.';
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const codePoints = [...TEXT].length;
